@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}testeeeeeeeeeee!{% endblock %}
+
+{% block stylesheets %}
+    <!-- Parent esta herdando o conteudo original tambem -->
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('principal.css') }}" >
+{% endblock %}
+
+{% block body %}
+    <h1>kk eae {{ nome }}</h1>
+
+    {% if(nome == 'andre') %}
+        if {{ nome }}
+    {% endif %}
+
+    {% for task in nomes %}
+        <li>{{ task }}</li>
+    {% endfor %}
+{% endblock %}
