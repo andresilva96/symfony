@@ -8,13 +8,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ClienteController extends Controller
 {
     /**
      * @Route("/")
      */
-    public function listarCliente(){
+    public function listarAction(){
         $em = $this->getDoctrine()->getManager();
         $repCliente = $em->getRepository(Cliente::class);
         $clientes = $repCliente->findAll();
@@ -32,9 +33,10 @@ class ClienteController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $repCliente = $em->getRepository(Cliente::class);
-        $cliente = $repCliente->find($id);
-        $em->remove($cliente);
-        $em->flush();
+        if ($cliente = $repCliente->find($id)) {
+            $em->remove($cliente);
+            $em->flush();
+        }
 
         return $this->redirect('/');
     }
@@ -53,6 +55,8 @@ class ClienteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($cliente);
             $em->flush();
+
+            return $this->redirect('/');
         }
 
         return $this->render('cliente/adicionar.html.twig');

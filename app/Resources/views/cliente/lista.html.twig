@@ -2,6 +2,6 @@
 {% block body %}
     <a href="/adicionar">Adicionar Cliente</a>
     {% for task in nomes %}
-        <p>Id: {{ task.id }} - Nome: {{ task.nome }} | <a href="remover/{{ task.id }}">Excluir</a></p>
+        <p>Id: {{ task.id }} - Nome: {{ task.nome }} | <a href="{{ path('app_cliente_remover', { 'id': task.id}) }}" >Excluir</a></p>
     {% endfor %}
 {% endblock %}
