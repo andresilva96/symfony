@@ -1,0 +1,5 @@
+Instalação Symfony:
+composer create-project symfony/framework-standard-edition my_project_name
+
+Doctrine:
+Entrar no arquivo: .\app\config\parameters.yml

@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <a href="/adicionar">Adicionar Cliente</a>
+    {% for task in nomes %}
+        <p>Id: {{ task.id }} - Nome: {{ task.nome }} | <a href="remover/{{ task.id }}">Excluir</a></p>
+    {% endfor %}
+{% endblock %}
